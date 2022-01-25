@@ -5,8 +5,9 @@ public class Win {
     public static boolean check(int[][] board) {
         boolean result = false;
         for (int row = 0; row < board.length; row++) {
-            if ( checkRow(board, row) || checkColumn(board, row) ) {
+            if (checkRow(board, row) || checkColumn(board, row)) {
                 result = true;
+                break;
             }
         }
         return result;
@@ -25,7 +26,7 @@ public class Win {
 
     public static boolean checkColumn(int[][] board, int cell) {
         boolean rsl = true;
-        for (int row = 0; row < board.length ; row++) {
+        for (int row = 0; row < board.length; row++) {
                 if (board[row][cell] != 1) {
                     rsl = false;
                     break;
