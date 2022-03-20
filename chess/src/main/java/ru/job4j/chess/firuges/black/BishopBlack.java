@@ -52,9 +52,8 @@ public class BishopBlack implements Figure {
     }
 
     public boolean isDiagonal(Cell source, Cell dest) {
-        /* TODO check diagonal */
-        int deltaX = dest.getX() - position().getX();
-        int deltaY = dest.getY() - position().getY();
+        int deltaX = dest.getX() - source.getX();
+        int deltaY = dest.getY() - source.getY();
         return  (Math.abs(deltaX) == Math.abs(deltaY) && deltaX != 0);
     }
 
@@ -62,12 +61,5 @@ public class BishopBlack implements Figure {
     public Figure copy(Cell dest) {
         return new BishopBlack(dest);
     }
-
-    public static void main(String[] args) {
-        BishopBlack bishop = new BishopBlack(Cell.C1);
-        Cell[] array = bishop.way(Cell.C2);
-        System.out.println(Arrays.toString(array));
-        }
-
-    }
+}
 
