@@ -19,6 +19,7 @@ public class LogicTest {
     public void moveThrowsFigureNotFoundException()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
+
         logic.move(Cell.C1, Cell.H6);
     }
 
