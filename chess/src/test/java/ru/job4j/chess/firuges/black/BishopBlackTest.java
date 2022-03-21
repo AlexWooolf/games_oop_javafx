@@ -1,23 +1,28 @@
 package ru.job4j.chess.firuges.black;
 
-import junit.framework.TestCase;
+
 import org.junit.Assert;
 import org.junit.Test;
 import ru.job4j.chess.ImpossibleMoveException;
 import ru.job4j.chess.firuges.Cell;
 
-public class BishopBlackTest extends TestCase {
+import static org.junit.Assert.assertEquals;
 
+public class BishopBlackTest {
+
+    @Test
     public void testPosition() {
         BishopBlack bishop = new BishopBlack(Cell.A1);
-        assertEquals(bishop.position(), Cell.A1 );
+        assertEquals(bishop.position(), Cell.A1);
     }
 
+    @Test
     public void testCopy() {
         BishopBlack bishop = new BishopBlack(Cell.A1);
-        assertEquals((bishop.copy(Cell.B2)).position(), Cell.B2 );
+        assertEquals((bishop.copy(Cell.B2)).position(), Cell.B2);
     }
 
+    @Test
     public void testWay() {
         BishopBlack bishop = new BishopBlack(Cell.C1);
         Cell[] rsl = bishop.way(Cell.G5);

@@ -25,36 +25,29 @@ public class BishopBlack implements Figure {
                     String.format("Could not move by diagonal from %s to %s", position, dest)
             );
         }
-        int deltaX = dest.getX() - position().getX();
-        int deltaY = dest.getY() - position().getY();
-        int size = Math.abs(deltaX);
+        int deltaX = -1;
+        int deltaY = -1;
+        if ((dest.getX() - position().getX()) > 0) {
+            deltaX = 1;
+        }
+        if ((dest.getY() - position().getY()) > 0) {
+            deltaY = 1;
+        }
+        int size = Math.abs(dest.getX() - position().getX());
         Cell[] steps = new Cell[size];
+        int x = position().getX();
+        int y = position().getY();
         for (int index = 0; index < size; index++) {
-            if (deltaX > 0 && deltaY > 0) {
-                int x = position().getX() + 1 + index;
-                int y = position().getY() + 1 + index;
-                steps[index] = Cell.findBy(x, y);
-            } else if (deltaX < 0 && deltaY < 0) {
-                int x = position().getX() - 1 - index;
-                int y = position().getY() - 1 - index;
-                steps[index] = Cell.findBy(x, y);
-            } else if (deltaX > 0 && deltaY < 0) {
-                int x = position().getX() + 1 + index;
-                int y = position().getY() - 1 - index;
-                steps[index] = Cell.findBy(x, y);
-            } else {
-                int x = position().getX() - 1 - index;
-                int y = position().getY() + 1 + index;
+            x = x += deltaX;
+            y = y += deltaY;
                 steps[index] = Cell.findBy(x, y);
             }
-        }
         return steps;
     }
 
     public boolean isDiagonal(Cell source, Cell dest) {
-        int deltaX = dest.getX() - source.getX();
-        int deltaY = dest.getY() - source.getY();
-        return  (Math.abs(deltaX) == Math.abs(deltaY) && deltaX != 0);
+        return  ((Math.abs(dest.getX() - source.getX())
+                == Math.abs(dest.getY() - source.getY()) && (dest.getX() - source.getX() != 0)));
     }
 
     @Override
